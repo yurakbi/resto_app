@@ -9,13 +9,14 @@ import Error from '../error';
 import './menu-list.scss';
 
 class MenuList extends Component {
+    
     componentDidMount() {
         this.props.menuRequested();
 
         const {RestoService} = this.props;
         RestoService.getMenuItems()
             .then(res => this.props.menuLoaded(res))
-            .catch(error => this.props.menuError());
+            .catch(() => this.props.menuError());
 
     }
 
